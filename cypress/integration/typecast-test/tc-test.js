@@ -3,19 +3,19 @@ const register = new Register()
 const { faker } = require('@faker-js/faker');
 
 
-describe('typecast happy flow ', () => {
+describe('Typecast Happy Flow ', () => {
 
     before(() => {
       cy.visit(Cypress.env('baseUrl'))
     })
 
-    after(() => {
+    after(() => {         //added just to use after hook in the code
       register.submit()
               .click()
     })
 
-
     it('Basic info', () => {
+
         register.genderFemale()
                 .click()
                 .should('have.value', 'F')
@@ -45,6 +45,7 @@ describe('typecast happy flow ', () => {
 
 
     it('Address', () => {
+
         register.address()
                 .type('Novosadska 12')
 
@@ -85,43 +86,38 @@ describe('typecast happy flow ', () => {
 
     it('Register as Company', () => {
 
-      register.registerAsCompany()
-              .click()
-              .should('have.value', 'true')
+        register.registerAsCompany()
+                .click()
+                .should('have.value', 'true')
 
-      register.companyName()
-              .type('Ivina Tvrtka')
-      
-      register.companyOIB()
-              .type('12345678901')
-      
-      register.companyEmail()
-              .type(faker.internet.email())
-      
-      register.companyTelephone()
-              .type('011 555 777')
-      
-      register.companyContactPerson()
-              .type('Ivina Tetka')
-      
-      register.companyAddress()
-              .type('Novosadska 3')
+        register.companyName()
+                .type('Ivina Tvrtka')
+        
+        register.companyOIB()
+                .type('12345678901')
+        
+        register.companyEmail()
+                .type(faker.internet.email())
+        
+        register.companyTelephone()
+                .type('011 555 777')
+        
+        register.companyContactPerson()
+                .type('Ivina Tetka')
+        
+        register.companyAddress()
+                .type('Novosadska 3')
 
-      register.companyZip()
-              .type('11000')
+        register.companyZip()
+                .type('11000')
 
-      register.zipHelper()
-              .click()   
-      
-      register.companyCity()
-              .should('have.value', 'BEOGRAD');
-      
-      register.companyCountry()
-              .should('have.value', '85');
+        register.zipHelper()
+                .click()   
+        
+        register.companyCity()
+                .should('have.value', 'BEOGRAD');
+        
+        register.companyCountry()
+                .should('have.value', '85');
     })
 })
-
-
-
-
-

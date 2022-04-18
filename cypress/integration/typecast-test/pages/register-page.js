@@ -12,7 +12,7 @@ export class Register {
 		return cy.get('#FirstName')
 	}
 
-    lastName(){
+	lastName(){
 		return cy.get('#LastName')
 	}
 
